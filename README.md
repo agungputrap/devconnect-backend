@@ -11,11 +11,9 @@ This is the backend service for **DevConnect**, a collaborative platform for dev
 - Dotenv for config management
 
 ## 📁 Project Structure
-```bash
+```
 ├── cmd/                          # Entry point
 │   └── main.go
-├── config/                       # DB config
-│   └── database.go
 ├── internal/                     # Business logic
 │   ├── domain/                   # Entity definitions (core business rules)
 │   │   ├── user/
@@ -32,7 +30,10 @@ This is the backend service for **DevConnect**, a collaborative platform for dev
 │   │       │   └── login.go
 │   │       └── dto/
 │   │           └── user_dto.go
-│   ├── infrastructure/         
+│   ├── infrastructure/
+│   │   ├── config/                 # Configuration related
+│   │   │   ├── config.go
+│   │   │   └── database.go                
 │   │   ├── persistence/
 │   │   │   └── postgres/
 │   │   │       └── user_repository.go
@@ -44,8 +45,6 @@ This is the backend service for **DevConnect**, a collaborative platform for dev
 ├── migration/                    # Migration files
 │   ├── 001_create_users.sql
 │   └── ...
-├── routes/                       # Fiber route groupings
-│   └── routes.go
 ├── .env
 ├── .env.example                  # Application configuration 
 ├── go.mod

@@ -12,42 +12,42 @@ This is the backend service for **DevConnect**, a collaborative platform for dev
 
 ## 📁 Project Structure
 ```bash
-├── cmd/                    # Entry point
+├── cmd/                          # Entry point
 │   └── main.go
-├── config/                 # DB config
+├── config/                       # DB config
 │   └── database.go
-├── internal/               # Business logic
-│   ├── domain/             # Entity definitions (core business rules)
+├── internal/                     # Business logic
+│   ├── domain/                   # Entity definitions (core business rules)
 │   │   ├── user/
-│   │   │   └── user.go
-│   │   ├── project/
-│   │   │   └── project.go
-│   │   └── application/
-│   │       └── application.go
-│   ├── usecase/            # Use cases (application logic)
-│   │   ├── user/
-│   │   │   └── usecase.go
-│   │   └── project/
-│   │       └── usecase.go
-│   ├── repository/         # Repository interfaces and GORM implementations
-│   │   ├── user/
-│   │   │   ├── interface.go
-│   │   │   └── gorm_repo.go
+│   │   │   └── user.go           # Domain model
+│   │   │   └── repository.go     # Repository interface
+│   │   │   └── service.go        # Domain service
+│   │   │   └── value_objects.go  # Value objects
 │   │   └── project/
 │   │       └── ...
-│   └── delivery/           # Handlers / HTTP delivery layer
-│       ├── http/
-│       │   ├── user_handler.go
-│       │   └── project_handler.go
-│       └── middleware/
-│           └── auth.go
-├── migration/              # Migration files
+│   ├── application/            
+│   │   └── user/
+│   │       ├── usecases/
+│   │       │   ├── register.go
+│   │       │   └── login.go
+│   │       └── dto/
+│   │           └── user_dto.go
+│   ├── infrastructure/         
+│   │   ├── persistence/
+│   │   │   └── postgres/
+│   │   │       └── user_repository.go
+│   │   └── auth/
+│   │       └── jwt_service.go
+│   └── interfaces/           
+│       └── http/
+│           └── user_handler.go
+├── migration/                    # Migration files
 │   ├── 001_create_users.sql
 │   └── ...
-├── routes/                 # Fiber route groupings
+├── routes/                       # Fiber route groupings
 │   └── routes.go
 ├── .env
-├── .env.example            # Application configuration 
+├── .env.example                  # Application configuration 
 ├── go.mod
 └── README.md
 ```
